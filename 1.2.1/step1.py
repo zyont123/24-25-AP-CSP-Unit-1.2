@@ -7,7 +7,7 @@ import random as rand
 spot_color = "pink"
 spot_size = 2
 spot_shape = "circle"
-
+score = 0
 #-----initialize turtle-----
 spot = trtl.Turtle()
 spot.shape(spot_shape)
@@ -16,14 +16,28 @@ spot.fillcolor(spot_color)
 
 #-----game functions--------
 def change_position(x,y):
-    xpos = rand.randint(1, 400)
-    ypos = rand.randint(1, 300)
+    xpos = rand.randint(-150, 150)
+    ypos = rand.randint(-175, 175)
     spot.goto(xpos, ypos)
-def spot_click(x, y):
-        spot.goto(x, y)
-        change_position(x, y)
+    spot.goto()
+    change_position()
+
+
+Def update_score():
+	Global score
+    Score += 1
+    score_writer.clear()
+    score_writer.write(score, font=font_setup)
+
 
 
 #-----events----------------
+Spot.onclick (spot_clicked)
+
 wn = trtl.Screen()
 wn.mainloop()
+
+(#)Score
+
+Score_writer = trtl.Turtle()
+Score_writer.penup()

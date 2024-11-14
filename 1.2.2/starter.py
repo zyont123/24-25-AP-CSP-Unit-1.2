@@ -8,8 +8,6 @@
 # -----import statements-----
 import turtle as trtl
 import random as rand
-import leaderboard as lb
-
 # -----game configuration-----
 # To view in trinket change the values of font_size, spot_size, and
 # screen_size by half
@@ -22,34 +20,24 @@ timer = 30
 counter_interval = 1000
 timer_up = False
 score = 0
-leaderboard_file_name = "a122_leaderboard.txt"
-player_name = input("what is your  name? ")
-
-
 # -----initialize the turtles-----
 spot = trtl.Turtle()
 spot.shape(spot_shape)
 spot.shapesize(spot_size)
 spot.fillcolor(spot_color)
-
 score_writer = trtl.Turtle()
 score_writer.hideturtle()
 score_writer.penup()
 score_writer.goto(160, 160)  # x,y set to fit on smaller screen
 score_writer.pendown()
 # score_writer.showturtle()
-
 counter = trtl.Turtle()
 counter.hideturtle()
 counter.penup()
 counter.goto(-160, 160)  # x,y set to fit on smaller screen
 counter.pendown()
-
-
 # counter.showturtle()
-
 # -----game functions-----
-
 # countdown function
 def countdown():
     global timer, timer_up
@@ -61,17 +49,12 @@ def countdown():
         counter.write("Timer: " + str(timer), font=font_setup)
         timer -= 1
         counter.getscreen().ontimer(countdown, counter_interval)
-
     # update and display the score
-
-
 def update_score():
     global score
     score = score + 1
     score_writer.clear()
     score_writer.write(score, font=font_setup)
-
-
 # what happens when the spot is clicked
 def spot_clicked(x, y):
     global timer_up
@@ -80,21 +63,15 @@ def spot_clicked(x, y):
         change_position()
     else:
         spot.hideturtle()
-
-
 # resize the turtle
 def resize():
     sizes = [.5, 1, 1.5, 2]
     spot.shapesize(rand.choice(sizes))
-
-
 # stamp turtle
 def leave_a_mark():
     spot.fillcolor(rand.choice(colors[1:]))
     spot.stamp()
     spot.fillcolor(colors[0])  # comment out for more a more difficult game
-
-
 # change the position of spot
 def change_position():
     leave_a_mark()  # challenge to add color
@@ -106,14 +83,27 @@ def change_position():
     spot.goto(new_xpos, new_ypos)  # 1st step in moving
     spot.showturtle()
     spot.pendown()
-
-
 # starting the game
 def start_game():
     spot.onclick(spot_clicked)
     counter.getscreen().ontimer(countdown, counter_interval)
+# initialize variables
+x = 4
+y = 8
+z = 12
 
+# print the variables
+print("x =", x)
+print("y =", y)
+print("z =", z)
+print("\n")
 
+# try some relational and logic operations
+print("x > y and z > y evaluates to", x > y and z > y)
+print("x > y or z > y evaluates to", x > y or z > y)
+print("x < y and y < z evaluates to", x < y and y < z)
+print("not (x > y) evaluates to", not (x > y))
+print("not (x < y) evaluates to", not (x < y))
 # ----------events----------
 start_game()
 wn = trtl.Screen()
